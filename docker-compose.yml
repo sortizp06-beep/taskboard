@@ -1,0 +1,13 @@
+services: #lista de contenedores proyecto (1)
+  postgres: #nombre del servicio
+    image: postgres:17 #receta para version PostgreSQL
+    environment: #coge los valores de .env
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports: #puerto que vimos en "docker ps"
+      - "5432:5432"
+    volumes: #donde monta el volumen para guardar datos
+      - postgres-data:/var/lib/postgresql/data
+volumes: #para que docker cree el volumen "docker compose up -d"
+  postgres-data:
